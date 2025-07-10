@@ -34,6 +34,24 @@ inputs:
   doppler-api-domain:
     default: "api.doppler.com"
     required: false
+  parse-json-secrets:
+    description: >-
+      Comma-separated list of secret names that contain JSON to parse into individual outputs.
+      Example: "DATABASE_CONFIG,API_ENDPOINTS"
+    required: false
+    default: ""
+  json-key-prefix:
+    description: >-
+      Prefix to add to parsed JSON keys to avoid conflicts with existing outputs.
+      Example: "JSON_" will create outputs like "JSON_SECRET", "JSON_ANOTHER_SECRET"
+    required: false
+    default: ""
+  auto-detect-json:
+    description: >-
+      Automatically detect and parse secrets that contain valid JSON objects.
+      Set to "true" to enable auto-detection.
+    required: false
+    default: "false"
 runs:
   using: 'node20'
   main: 'index.js'
